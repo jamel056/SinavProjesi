@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ExamCreator.Models.ViewModels.ArticleViewModel>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"> Articles List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-controller="Article" asp-action="Add" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Article </a>
+    </div>
+</div>
+
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(m => m.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.CreateDate)
+            </th>
+            <th>
+                <h4>Functions</h4>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row-@item.Id">
+                <td>
+                    @Html.DisplayFor(m => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.CreateDate)
+                </td>
+                <td style="width:150px">
+                    <div class="btn-group" role="group">
+                        <span class="mr-2">
+                            <a type="button" class="btn btn-primary" asp-controller="Article" asp-action="Edit" asp-route-id="@item.Id">
+                                Edit
+                            </a>
+                        </span>
+                        <span>
+                            <a type="button" class="btn btn-danger" href="javascript:openDeleteModal(@item.Id)">
+                                Delete
+                            </a>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<!-- Modal-->
+<div class="modal fade" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Delete Article</h5>
+            </div>
+            <div id="detailsBody" class="modal-body">
+                <h2>Are You Sure You Want To Delete This Article?</h2>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="DeleteArticle()" data-dismiss="modal">Delete</button>
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        var articleId;
+
+        function openDeleteModal(id) {
+            $('#deleteModal').modal('show');
+            articleId = id;
+        }
+
+        function DeleteArticle() {
+
+            $.ajax({
+                type: "Delete",
+                url: `/Article/Delete/${articleId}`,
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    $('#deleteModal').modal('hide');
+                    toastr.success('Article Deleted Successfully!!!', 'Success');
+                    $(`#row-${articleId}`).remove();
+                },
+                error: function () {
+                    toastr.error('Problem Exist!!', 'Error');
+                }
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+}
