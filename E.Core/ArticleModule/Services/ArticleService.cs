@@ -14,6 +14,7 @@ namespace E.Core.ArticleModule.Services
         Task<bool> Delete(int id);
         Task<Article> Get(int id);
         Task<List<Article>> GetAll();
+        Task<List<Article>> GetPart(int number);
     }
 
     public class ArticleService : IArticleService
@@ -69,6 +70,11 @@ namespace E.Core.ArticleModule.Services
         public async Task<List<Article>> GetAll()
         {
             return (await _unitOfWorks.ArticleRepository.GetAllAsync()).ToList();
+        }
+
+        public async Task<List<Article>> GetPart(int number)
+        {
+            return await _unitOfWorks.ArticleRepository.GetPart(number);
         }
     }
 }

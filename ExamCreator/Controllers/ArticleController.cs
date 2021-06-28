@@ -81,5 +81,14 @@ namespace ExamCreator.Controllers
 
             return Ok(new { IsDeleted = result });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPart()
+        {
+            const int number = 5;
+            var result = await _articleService.GetPart(number);
+
+            return Ok(result);
+        }
     }
 }

@@ -1,0 +1,174 @@
+﻿@model E.Core.ExamFormModule.Requests.ExamFormRequest
+<br />
+<br />
+<form method="post">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <select class="form-control mb-4" asp-for="FormQuestion" id="formQuestion">
+                <option value="null">Choose Question</option>
+            </select>
+            <textarea class="form-control mb-2" rows="8" asp-for="FormText" id="formText"></textarea>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <input class="form-control mb-1" asp-for="Questions[0].Question" type="text" placeholder="Question 1" />
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[0].Answers[0].Answer" type="text" placeholder="A)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[0].Answers[1].Answer" type="text" placeholder="B)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[0].Answers[2].Answer" type="text" placeholder="C)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[0].Answers[3].Answer" type="text" placeholder="D)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <select class="form-control mb-2" id="">
+                        <option value="null">Choose Correct Answer</option>
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <input class="form-control mb-1" asp-for="Questions[1].Question" type="text" placeholder="Question 2" />
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[1].Answers[0].Answer" type="text" placeholder="A)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[1].Answers[1].Answer" type="text" placeholder="B)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[1].Answers[2].Answer" type="text" placeholder="C)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[1].Answers[3].Answer" type="text" placeholder="D)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <select class="form-control mb-2" id="">
+                        <option value="null">Choose Correct Answer</option>
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <input class="form-control mb-1" asp-for="Questions[2].Question" type="text" placeholder="Question 3" />
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[2].Answers[0].Answer" type="text" placeholder="A)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[2].Answers[1].Answer" type="text" placeholder="B)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[2].Answers[2].Answer" type="text" placeholder="C)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[2].Answers[3].Answer" type="text" placeholder="D)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <select class="form-control mb-2" id="">
+                        <option value="null">Choose Correct Answer</option>
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <input class="form-control mb-1" asp-for="Questions[3].Question" type="text" placeholder="Question 4" />
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[3].Answers[0].Answer" type="text" placeholder="A)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[3].Answers[1].Answer" type="text" placeholder="B)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[3].Answers[2].Answer" type="text" placeholder="C)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="col-5">
+                    <input class="form-control mb-1" asp-for="Questions[3].Answers[3].Answer" type="text" placeholder="D)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <select class="form-control mb-6" id="">
+                        <option value="null">Choose Correct Answer</option>
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                    </select>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <button type="submit" class="form-control btn btn-primary mb-2">Create Form</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</form>

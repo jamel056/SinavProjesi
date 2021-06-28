@@ -12,6 +12,9 @@ namespace E.Infrast.Data
         }
 
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ExamForm> ExamForms { get; set; }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Answers> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
