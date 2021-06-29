@@ -1,8 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<ExamCreator.Models.ViewModels.ExamFormViewModel>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <h2 class="text-info"> Take A Test</h2>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(m => m.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.FormQuestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.CreateDate)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr id="row-@item.Id">
+                <td>
+                    @Html.DisplayFor(m => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.FormQuestion)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.CreateDate)
+                </td>
+                <td style="width:150px">
+                    <div class="btn-group" role="group">
+                        <span>
+                            <a asp-controller="Home" asp-action="TakeTest" asp-route-id="@item.Id" class="btn btn-info">Start</a>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
 </div>

@@ -1,16 +1,13 @@
 ﻿@model E.Core.ExamFormModule.Requests.ExamFormRequest
 <br />
 <br />
+
 <form method="post">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
             <select class="form-control mb-4" asp-for="FormQuestion" id="formQuestion">
                 <option value="null">Choose Question</option>
-                @foreach (var item in Model.Articles)
-                {
-                    <option value="@item.Title">@item.Title</option>
-                }
             </select>
             <span asp-validation-for="FormQuestion" class="text-danger"></span>
             <textarea class="form-control mb-2" rows="8" asp-for="FormText" id="formText"></textarea>
@@ -180,7 +177,7 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
-                    <select asp-for="Questions[3].AnswerTrue" class="form-control mb-6" id="">
+                    <select asp-for="Questions[3].AnswerTrue" class="form-control" id="">
                         <option value="null">Choose Correct Answer</option>
                         <option value="1">A</option>
                         <option value="2">B</option>
@@ -194,7 +191,7 @@
         </div>
         <div class="col-1"></div>
     </div>
-    <div class="row">
+    <div class="row mt-4">
         <div class="col-4"></div>
         <div class="col-4">
             <button type="submit" class="form-control btn btn-primary mb-2">Create Form</button>
@@ -207,10 +204,30 @@
 @section Scripts{
 
     <script>
+        var list = [];
         $(document).ready(function () {
 
+            $.ajax({
+                type: "GET",
+                url: `/Article/GetArticles`,
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    list = response;
+                    console.log(response);
+                    response.forEach((item) => {
+                        $('#formQuestion').append(`
+                                        <option value="${item.title}">${item.title}</option>
+                                        `);
+                    });
+                },
+                error: function () {
+
+                }
+            });
+
             $('#formQuestion').on('change', function (e) {
-                $("#formText").val($('#formQuestion').val());
+                var formText = list.find(x => x.title == $('#formQuestion').val())
+                $("#formText").val(formText.text);
             });
 
         })

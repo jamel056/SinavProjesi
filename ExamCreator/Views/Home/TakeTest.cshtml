@@ -1,0 +1,188 @@
+﻿
+@model ExamCreator.Models.ViewModels.ExamFormDetailViewModel
+
+    <style>
+        .right {
+            background-color: green;
+        }
+
+        .wrong {
+            background-color: red;
+        }
+    </style>
+
+    <br />
+    <br />
+    <input type="text" id="ExamFormId" value="@Model.Id" hidden>
+    <div class="row mb-3">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <h4 class="text-center">@Model.FormQuestion</h4>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <p class="mb-4">@Model.FormText</p>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <p class="mb-4">1) @Model.Questions[0].Question</p>
+            <form>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[0].Answers[0].Id"> @Model.Questions[0].Answers[0].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[0].Answers[1].Id"> @Model.Questions[0].Answers[1].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[0].Answers[2].Id"> @Model.Questions[0].Answers[2].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[0].Answers[3].Id"> @Model.Questions[0].Answers[3].Answer</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4">
+            <p class="mb-4">2) @Model.Questions[1].Question</p>
+            <form>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[1].Answers[0].Id"> @Model.Questions[1].Answers[0].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[1].Answers[1].Id"> @Model.Questions[1].Answers[1].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[1].Answers[2].Id"> @Model.Questions[1].Answers[2].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[1].Answers[3].Id"> @Model.Questions[1].Answers[3].Answer</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <p class="mb-4">3) @Model.Questions[2].Question</p>
+            <form>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[2].Answers[0].Id"> @Model.Questions[2].Answers[0].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[2].Answers[1].Id"> @Model.Questions[2].Answers[1].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[2].Answers[2].Id"> @Model.Questions[2].Answers[2].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[2].Answers[3].Id"> @Model.Questions[2].Answers[3].Answer</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4">
+            <p class="mb-4">4) @Model.Questions[3].Question</p>
+            <form>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[3].Answers[0].Id"> @Model.Questions[3].Answers[0].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[3].Answers[1].Id"> @Model.Questions[3].Answers[1].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[3].Answers[2].Id"> @Model.Questions[3].Answers[2].Answer</label>
+                    </div>
+                </div>
+                <div class="row radio mb-1">
+                    <div class="col-12 border border-dark">
+                        <label><input type="radio" class="mb-1" name="optradio" id="@Model.Questions[3].Answers[3].Id"> @Model.Questions[3].Answers[3].Answer</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <a href="javascript:GetResult()" class="btn btn-primary mb-2">Get Result</a>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+
+    @section Scripts{
+
+        <script>
+            var list = [];
+            function GetResult() {
+                list = [];
+                $("input:radio").each(function () {
+                    var $this = $(this);
+
+                    if ($this.is(":checked")) {
+                        list.push(parseInt($this.attr("id")));
+                    }
+                });
+
+                console.log(list)
+                var id = parseInt($("#ExamFormId").val());
+                $.ajax({
+                    type: "GET",
+                    url: `/Home/TakeResult/${id}`,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        $('input[type="radio"]').attr('disabled', true)
+
+                        list.forEach((item) => {
+                            if (response.correctAnswerIds.includes(item)) {
+                                console.log(item)
+                                $(`#${item}`).parent().parent().addClass('right');
+                            } else {
+                                $(`#${item}`).parent().parent().addClass('wrong');
+                            }
+                        })
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+        </script>
+    }

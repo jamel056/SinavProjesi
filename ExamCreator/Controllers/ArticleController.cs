@@ -82,5 +82,14 @@ namespace ExamCreator.Controllers
             return Ok(new { IsDeleted = result });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetArticles()
+        {
+            const int articleNumbers = 5;
+            var articles = await _articleService.GetPart(articleNumbers);
+            var result = articles.Select(x => new ArticleForExamFormViewModel(x));
+
+            return Ok(result);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using E.Entities.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace E.Core.ExamFormModule.Requests
@@ -8,7 +7,6 @@ namespace E.Core.ExamFormModule.Requests
     {
         public ExamFormRequest()
         {
-            Articles = new List<Article>();
             Questions = new List<QuestionsRequest>();
             for (var i = 0; i < 4; i++)
             {
@@ -26,6 +24,5 @@ namespace E.Core.ExamFormModule.Requests
         [Required]
         public string FormText { get; set; }
         public List<QuestionsRequest> Questions { get; set; }
-        public List<Article> Articles { get; set; }
     }
 }

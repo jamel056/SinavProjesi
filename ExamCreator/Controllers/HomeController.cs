@@ -1,22 +1,45 @@
-﻿using ExamCreator.Models;
+﻿using E.Core.ExamFormModule.Services;
+using ExamCreator.Models;
+using ExamCreator.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ExamCreator.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IExamFormService _examFormService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IExamFormService examFormService)
         {
-            _logger = logger;
+            _examFormService = examFormService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var formsFromDb = await _examFormService.GetAll();
+
+            var response = formsFromDb.Select(x => new ExamFormViewModel(x));
+            return View(response);
+        }
+
+        public async Task<IActionResult> TakeTest(int id)
+        {
+            var examForm = await _examFormService.Get(id);
+            var response = new ExamFormDetailViewModel(examForm);
+
+            return View(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TakeResult([FromRoute] int id)
+        {
+            var examForm = await _examFormService.Get(id);
+            var response = new ExamResultViewModel(examForm);
+
+            return Ok(response);
         }
 
         public IActionResult Privacy()
