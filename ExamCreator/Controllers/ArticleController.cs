@@ -86,9 +86,9 @@ namespace ExamCreator.Controllers
         public async Task<IActionResult> GetPart()
         {
             const int number = 5;
-            var result = await _articleService.GetPart(number);
-
-            return Ok(result);
+            var articlesFromDb = await _articleService.GetPart(number);
+            var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
+            return Ok(response);
         }
     }
 }

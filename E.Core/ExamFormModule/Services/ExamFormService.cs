@@ -65,11 +65,13 @@ namespace E.Core.ExamFormModule.Services
                 form.Questions.Add(item);
                 foreach (var answer in question.Answers)
                 {
+                    var index = 1;
                     item.Answers.Add(new Answers()
                     {
                         Answer = answer.Answer,
-                        IsTrue = answer.IsTrue
+                        IsTrue = index == question.AnswerTrue ? true : false
                     });
+                    index++;
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿using E.Core.ExamFormModule.Requests;
+﻿using E.Core.ArticleModule.Services;
+using E.Core.ExamFormModule.Requests;
 using E.Core.ExamFormModule.Services;
 using ExamCreator.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -12,10 +13,12 @@ namespace ExamCreator.Controllers
     public class ExamFormController : Controller
     {
         private readonly IExamFormService _examFormService;
+        private readonly IArticleService _articleService;
 
-        public ExamFormController(IExamFormService examFormService)
+        public ExamFormController(IExamFormService examFormService, IArticleService articleService)
         {
             _examFormService = examFormService;
+            _articleService = articleService;
         }
 
         public async Task<IActionResult> Index()
@@ -26,10 +29,16 @@ namespace ExamCreator.Controllers
             return View(response);
         }
 
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
+            const int number = 5;
+            var articlesFromDb = await _articleService.GetPart(number);
+            var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
 
-            return View();
+            ViewBag.ArticlesList = response;
+
+            var model = new ExamFormRequest();
+            return View(model);
         }
 
         [HttpPost]
