@@ -8,7 +8,7 @@ namespace ExamCreator.Models.ViewModels
         public ExamFormViewModel(ExamForm form)
         {
             Id = form.Id;
-            FormQuestion = form.FormQuestion.SubAddString(20);
+            FormQuestion = form.FormQuestion.SubAddString(30);
             CreateDate = form.CreateDate.ToString("dd/MM/yyyy");
         }
 

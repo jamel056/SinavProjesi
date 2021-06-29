@@ -82,13 +82,5 @@ namespace ExamCreator.Controllers
             return Ok(new { IsDeleted = result });
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetPart()
-        {
-            const int number = 5;
-            var articlesFromDb = await _articleService.GetPart(number);
-            var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
-            return Ok(response);
-        }
     }
 }

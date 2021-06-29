@@ -8,7 +8,7 @@ namespace ExamCreator.Models.ViewModels
         public ArticleViewModel(Article article)
         {
             Id = article.Id;
-            Title = article.Title.SubAddString(20);
+            Title = article.Title.SubAddString(30);
             CreateDate = article.CreateDate.ToString("dd/MM/yyyy");
         }
 

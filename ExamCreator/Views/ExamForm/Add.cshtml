@@ -7,9 +7,9 @@
         <div class="col-10">
             <select class="form-control mb-4" asp-for="FormQuestion" id="formQuestion">
                 <option value="null">Choose Question</option>
-                @foreach (var item in ViewBag.ArticlesList)
+                @foreach (var item in Model.Articles)
                 {
-                    <option value="@item.Text">@item.Title</option>
+                    <option value="@item.Title">@item.Title</option>
                 }
             </select>
             <span asp-validation-for="FormQuestion" class="text-danger"></span>

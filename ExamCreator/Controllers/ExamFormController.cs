@@ -33,11 +33,12 @@ namespace ExamCreator.Controllers
         {
             const int number = 5;
             var articlesFromDb = await _articleService.GetPart(number);
-            var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
+            //var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
 
-            ViewBag.ArticlesList = response;
+            //ViewBag.ArticlesList = response;
 
             var model = new ExamFormRequest();
+            model.Articles = articlesFromDb;
             return View(model);
         }
 
@@ -45,6 +46,12 @@ namespace ExamCreator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(ExamFormRequest request)
         {
+            //const int number = 5;
+            //var articlesFromDb = await _articleService.GetPart(number);
+            //var response = articlesFromDb.Select(x => new ArticleForExamFormViewModel(x));
+
+            //ViewBag.ArticlesList = response;
+
             if (ModelState.IsValid)
             {
                 var result = await _examFormService.Create(request);
